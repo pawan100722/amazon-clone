@@ -54,10 +54,23 @@
   font-size: 0.8rem;
 }
 
+.header-input-container{
+  margin: 0 10px;
+}
+
 .header-input-search-box{
-  width: 500px;
-  height: 30px;
-  border-radius: 8px;
-  border:none;
-  outline: none;
+  width: 550px;
+  height: 44px;
+  border-radius: 0 6px 6px 0;
+  border:0;
+  outline: 0;
+  font-size: 1rem;
+  padding-bottom: 1px;
+}
+
+.header-input-dropdown{
+  width: 65px;
+  height:45px;
+  padding: 6px;
+  border-radius: 6px 0 0 6px;
 }

@@ -3,6 +3,31 @@ import '../Styles/Header.css';
 // import amazonLogo from '../Images/amazon-logo.png'
 
 export const Header =()=>{
+  
+  const productCategories = [
+    "All",
+    "Electronics",
+    "Clothing & Apparel",
+    "Home & Kitchen",
+    "Beauty & Personal Care",
+    "Sports & Outdoors",
+    "Toys & Games",
+    "Books & Stationery",
+    "Health & Wellness",
+    "Automotive",
+    "Pet Supplies",
+    "Grocery & Food",
+    "Jewelry & Accessories",
+    "Furniture",
+    "Baby & Kids",
+    "Office Supplies",
+    "Software & Apps",
+    "Arts & Crafts",
+    "Travel & Luggage",
+    "Music & Instruments",
+    "Gardening & Outdoor Living",
+  ];
+
   return (
     <div className="home-header-container">
       <a href="https://www.amazon.in/ref=nav_logo">
@@ -21,7 +46,12 @@ export const Header =()=>{
       </div>
 
       <div className='header-input-container'>
-        <input type="text" className='header-input-search-box' />
+        <select name="product" className='header-input-dropdown'>
+          {
+            productCategories.map((prod,index)=> <option key={index}>{prod}</option>)
+          }
+        </select>
+        <input type="text" className='header-input-search-box' placeholder='Search Amazon.in' />
       </div>
     </div>
   );
