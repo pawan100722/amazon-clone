@@ -1,58 +1,87 @@
-import { LocationIcon } from '../Icons/LocationIcon';
-import '../Styles/Header.css';
-// import amazonLogo from '../Images/amazon-logo.png'
+import { useState } from "react";
+import { CONSTANT } from "../CONSTANTS";
+import { LocationIcon } from "../Icons/LocationIcon";
+import { SearchIcon } from "../Icons/SearchIcon";
+import "../Styles/Header.css";
 
-export const Header =()=>{
-  
-  const productCategories = [
-    "All",
-    "Electronics",
-    "Clothing & Apparel",
-    "Home & Kitchen",
-    "Beauty & Personal Care",
-    "Sports & Outdoors",
-    "Toys & Games",
-    "Books & Stationery",
-    "Health & Wellness",
-    "Automotive",
-    "Pet Supplies",
-    "Grocery & Food",
-    "Jewelry & Accessories",
-    "Furniture",
-    "Baby & Kids",
-    "Office Supplies",
-    "Software & Apps",
-    "Arts & Crafts",
-    "Travel & Luggage",
-    "Music & Instruments",
-    "Gardening & Outdoor Living",
-  ];
+export const Header = () => {
+  const productCategories = CONSTANT.PRODUCT_CATEGORIES;
+  const [isDropdownSelected, setIsDropdownSelected] = useState<boolean>(false);
+  const [searchInput, setSearchInput] = useState<string>("");
+
+  const handleInputChange = (
+    eventParam: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setSearchInput(eventParam.target.value);
+  };
+
+  const handleClick =  () => {
+    gotoAmazonPage()
+  };
+
+  const handleDropdownChange = (
+    eventParam: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    if (eventParam.target.value === "All") setIsDropdownSelected(false);
+    else setIsDropdownSelected(true);
+  };
+
+  const handleKeyDown=(eventParam: React.KeyboardEvent<HTMLInputElement>)=>{
+    console.log('key:', eventParam.key);
+    
+    if( searchInput && eventParam.key==='Enter'){
+      gotoAmazonPage()
+    }
+  }
+
+  const gotoAmazonPage=()=>{
+    const url = `https://www.amazon.in/s?k=${searchInput}`;
+    window.location.href = url;
+  };
 
   return (
     <div className="home-header-container">
-      <a href="https://www.amazon.in/ref=nav_logo">
-        {/* <img className="header-amazon-logo" src={amazonLogo} alt="" /> */}
+      <a
+        href="https://www.amazon.in/ref=nav_logo"
+        className="amazon-logo-container white-border"
+      >
         <div className="header-amazon-logo"></div>
       </a>
 
-      <div className="header-location-container">
+      <div className="header-location-container white-border">
         <div className="header-location-icon">
           <LocationIcon />
         </div>
-        <div className='header-address-container'>
+        <div className="header-address-container">
           <span className="header-address">Bareilly Uttar Pradesh 243001</span>
-          <span className='location-update'>Location Update</span>
+          <span className="location-update">Location Update</span>
         </div>
       </div>
 
-      <div className='header-input-container'>
-        <select name="product" className='header-input-dropdown'>
-          {
-            productCategories.map((prod,index)=> <option key={index}>{prod}</option>)
-          }
+      <div className="header-input-container">
+        <select
+          name="product"
+          className="header-input-dropdown"
+          onChange={(e) => handleDropdownChange(e)}
+          style={{ width: `${isDropdownSelected ? "160px" : "36px"}` }}
+        >
+          {productCategories.map((prod, index) => (
+            <option key={index}>{prod}</option>
+          ))}
         </select>
-        <input type="text" className='header-input-search-box' placeholder='Search Amazon.in' />
+        <input
+          type="text"
+          className="header-input-search-box"
+          placeholder="Search Amazon.in"
+          onChange={handleInputChange}
+          onKeyDown={(e) => {
+            handleKeyDown(e);
+          }}
+        />
+        <div className="input-search-icon" onClick={handleClick}>
+          <SearchIcon />
+        </div>
       </div>
     </div>
   );
-}
+};
