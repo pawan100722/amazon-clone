@@ -6,6 +6,7 @@ import flagImage from '../Images/india_flag.png'
 import "../Styles/Header.css";
 import { DropdownIcon } from "../Icons/DropdownIcon";
 
+
 export const Header = () => {
   const productCategories = CONSTANT.PRODUCT_CATEGORIES;
   const [nativeLanguages] = useState( CONSTANT.NATIVE_LANGUAGES)
