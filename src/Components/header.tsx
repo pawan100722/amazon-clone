@@ -2,12 +2,20 @@ import { useState } from "react";
 import { CONSTANT } from "../CONSTANTS";
 import { LocationIcon } from "../Icons/LocationIcon";
 import { SearchIcon } from "../Icons/SearchIcon";
+import flagImage from '../Images/india_flag.png'
 import "../Styles/Header.css";
+import { DropdownIcon } from "../Icons/DropdownIcon";
 
 export const Header = () => {
   const productCategories = CONSTANT.PRODUCT_CATEGORIES;
+  const [nativeLanguages] = useState( CONSTANT.NATIVE_LANGUAGES)
   const [isDropdownSelected, setIsDropdownSelected] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>("");
+  const [selectedLanguage] = useState<any>({
+    code: "en",
+    name: "English",
+    nativeName: "English",
+  });
 
   const handleInputChange = (
     eventParam: React.ChangeEvent<HTMLInputElement>
@@ -38,6 +46,7 @@ export const Header = () => {
     const url = `https://www.amazon.in/s?k=${searchInput}`;
     window.location.href = url;
   };
+
 
   return (
     <div className="home-header-container">
@@ -80,6 +89,28 @@ export const Header = () => {
         />
         <div className="input-search-icon" onClick={handleClick}>
           <SearchIcon />
+        </div>
+      </div>
+
+      <div className="header-language-dropdown-container white-border">
+        <img src={flagImage} alt="Flag Image" className="header-flag-image" />
+
+        <div className="header-language-dropdown ">
+          {selectedLanguage?.code}
+        </div>
+
+        <div className="language-arrow-down">
+          <DropdownIcon />
+        </div>
+        <div className="language-option-arrow-up"></div>
+        <div className="language-option-container">
+          {nativeLanguages.map((lang) => {
+            return (
+              <div className="language-option">
+                <span>{lang?.code}</span> <span>{lang?.nativeName}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
