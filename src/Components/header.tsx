@@ -2,32 +2,44 @@ import { useState } from "react";
 import { CONSTANT } from "../CONSTANTS";
 import { LocationIcon } from "../Icons/LocationIcon";
 import { SearchIcon } from "../Icons/SearchIcon";
-import flagImage from '../Images/india_flag.png'
+import flagImage from "../Images/india_flag.png";
 import "../Styles/Header.css";
 import { DropdownIcon } from "../Icons/DropdownIcon";
 
-
 export const Header = () => {
   const productCategories = CONSTANT.PRODUCT_CATEGORIES;
-  const [nativeLanguages] = useState( CONSTANT.NATIVE_LANGUAGES)
+  const [nativeLanguages] = useState(CONSTANT.NATIVE_LANGUAGES);
   const [isDropdownSelected, setIsDropdownSelected] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>("");
-  const [selectedLanguage] = useState<any>({
+  const [selectedLanguage, setSelectedLanguage] = useState<any>({
     code: "en",
     name: "English",
     nativeName: "English",
   });
 
+  /**
+   * This function is used to take and set in input values of the header search bar
+   * @param eventParam
+   */
   const handleInputChange = (
     eventParam: React.ChangeEvent<HTMLInputElement>
   ) => {
     setSearchInput(eventParam.target.value);
   };
 
-  const handleClick =  () => {
-    gotoAmazonPage()
+  /**
+   * It redirects to the Amazon page, if user clicks the search icon after typing the search keywords
+   */
+  const handleClick = () => {
+    if (searchInput) {
+      gotoAmazonPage();
+    }
   };
 
+  /**
+   * Used to handle the dropdown changes for product categories near search box in the header
+   * @param eventParam 
+   */
   const handleDropdownChange = (
     eventParam: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -35,19 +47,36 @@ export const Header = () => {
     else setIsDropdownSelected(true);
   };
 
-  const handleKeyDown=(eventParam: React.KeyboardEvent<HTMLInputElement>)=>{
-    console.log('key:', eventParam.key);
-    
-    if( searchInput && eventParam.key==='Enter'){
-      gotoAmazonPage()
+  /**
+   * Used when user types something in the searchbar and then hits enter button
+   * @param eventParam 
+   */
+  const handleKeyDown = (eventParam: React.KeyboardEvent<HTMLInputElement>) => {
+    if (searchInput && eventParam.key === "Enter") {
+      gotoAmazonPage();
     }
+  };
+
+  const handleLanguageRadioChange2=(eventParam: React.ChangeEvent<HTMLInputElement>)=>{
+    console.log('language select value changes!!!!');
+    console.log(eventParam.target.value);
+    const languageName: any = eventParam?.target?.value;
+    const language= CONSTANT.NATIVE_LANGUAGES[languageName];
+    console.log('Selected Language is::::::', language);
   }
 
-  const gotoAmazonPage=()=>{
+  const handleLanguageRadioChange=(langParam: any)=>{
+    setSelectedLanguage(langParam);
+  }
+
+
+  /**
+   * It redirects to the amazon page
+   */
+  const gotoAmazonPage = () => {
     const url = `https://www.amazon.in/s?k=${searchInput}`;
     window.location.href = url;
   };
-
 
   return (
     <div className="home-header-container">
@@ -105,11 +134,38 @@ export const Header = () => {
         </div>
         <div className="language-option-arrow-up"></div>
         <div className="language-option-container">
-          {nativeLanguages.map((lang) => {
+          {nativeLanguages.map((lang,indx) => {
             return (
-              <div className="language-option">
-                <span>{lang?.code}</span> <span>{lang?.nativeName}</span>
-              </div>
+                <div
+                  className="each-language-option-container"
+                  key={`${indx}-${lang?.code}-${lang?.code}`}
+                >
+                  {selectedLanguage?.code === lang.code ? (
+                    <input
+                      type="radio"
+                      name="language"
+                      value={lang?.name}
+                      id={`${lang?.nativeName}`}
+                      className={`language-radio`}
+                      onChange={() => handleLanguageRadioChange(lang)}
+                      key={indx}
+                      checked={lang.code === selectedLanguage?.code}
+                    />
+                  ) : (
+                    <div className="custom-radio" key={lang?.code}></div>
+                  )}
+                  <label
+                    htmlFor={`${lang?.nativeName}`}
+                    className="language-display"
+                    key={lang?.name}
+                    onClick={() => handleLanguageRadioChange(lang)}
+                  >
+                    <span key={lang?.nativeName}>{lang?.nativeName}</span>-
+                    <span key={`${lang?.code}-${lang?.name}`}>
+                      {lang?.code}
+                    </span>
+                  </label>
+                </div>
             );
           })}
         </div>
