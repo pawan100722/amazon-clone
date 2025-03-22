@@ -133,39 +133,20 @@ export const Header = () => {
           <DropdownIcon />
         </div>
         <div className="language-option-arrow-up"></div>
-        <div className="language-option-container">
+        <div className="all-language-option-container">
           {nativeLanguages.map((lang,indx) => {
             return (
-                <div
-                  className="each-language-option-container"
-                  key={`${indx}-${lang?.code}-${lang?.code}`}
-                >
-                  {selectedLanguage?.code === lang.code ? (
-                    <input
-                      type="radio"
-                      name="language"
-                      value={lang?.name}
-                      id={`${lang?.nativeName}`}
-                      className={`language-radio`}
-                      onChange={() => handleLanguageRadioChange(lang)}
-                      key={indx}
-                      checked={lang.code === selectedLanguage?.code}
-                    />
-                  ) : (
-                    <div className="custom-radio" key={lang?.code}></div>
-                  )}
-                  <label
-                    htmlFor={`${lang?.nativeName}`}
-                    className="language-display"
-                    key={lang?.name}
-                    onClick={() => handleLanguageRadioChange(lang)}
-                  >
-                    <span key={lang?.nativeName}>{lang?.nativeName}</span>-
-                    <span key={`${lang?.code}-${lang?.name}`}>
-                      {lang?.code}
-                    </span>
-                  </label>
+              <div
+                className="each-language-option-container"
+                key={`${indx}-${lang?.code}-${lang?.code}`}
+              >
+                <div className={`option-circle ${selectedLanguage?.code === lang.code?'option-selected':''}`}></div>
+                <div className="option-name-container">
+                  <div>{lang?.code}</div>
+                  <div>-</div>
+                  <div>{lang?.nativeName}</div>
                 </div>
+              </div>
             );
           })}
         </div>

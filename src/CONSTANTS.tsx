@@ -24,6 +24,7 @@ export const CONSTANT={
     ],
 
     NATIVE_LANGUAGES: [
+    { code: "en", name: "English", nativeName: "English" } ,
     { code: "hi", name: "Hindi", nativeName: "हिन्दी" },
     { code: "bn", name: "Bengali", nativeName: "বাংলা" },
     { code: "te", name: "Telugu", nativeName: "తెలుగు" },
@@ -44,6 +45,5 @@ export const CONSTANT={
     { code: "kok", name: "Konkani", nativeName: "कोंकणी" },
     { code: "doi", name: "Dogri", nativeName: "डोगरी" },
     { code: "mni", name: "Manipuri", nativeName: "মৈতৈলোন্" },
-    { code: "en", name: "English", nativeName: "English" } 
 ],
 }
