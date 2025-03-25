@@ -11,10 +11,16 @@ export const Header = () => {
   const [nativeLanguages] = useState(CONSTANT.NATIVE_LANGUAGES);
   const [isDropdownSelected, setIsDropdownSelected] = useState<boolean>(false);
   const [searchInput, setSearchInput] = useState<string>("");
-  const [selectedLanguage, setSelectedLanguage] = useState<any>({
+  const [selectedLanguage, setSelectedLanguage] = useState<LanguageDTO>({
     code: "en",
     name: "English",
     nativeName: "English",
+  });
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen]=useState<boolean>(false);
+  const [hoveredLanguage, setHoveredLanguage] = useState<LanguageDTO>({
+    code: "",
+    name: "",
+    nativeName: "",
   });
 
   /**
@@ -57,17 +63,17 @@ export const Header = () => {
     }
   };
 
-  const handleLanguageRadioChange2=(eventParam: React.ChangeEvent<HTMLInputElement>)=>{
-    console.log('language select value changes!!!!');
-    console.log(eventParam.target.value);
-    const languageName: any = eventParam?.target?.value;
-    const language= CONSTANT.NATIVE_LANGUAGES[languageName];
-    console.log('Selected Language is::::::', language);
+
+  /**
+   * It changes the language for header language dropdown
+   * @param langParam 
+   */
+  const handleLanguageRadioChange=(langParam: LanguageDTO)=>{
+    setSelectedLanguage(langParam);
+    setIsLanguageDropdownOpen(false);
   }
 
-  const handleLanguageRadioChange=(langParam: any)=>{
-    setSelectedLanguage(langParam);
-  }
+  /
 
 
   /**
@@ -122,7 +128,16 @@ export const Header = () => {
         </div>
       </div>
 
-      <div className="header-language-dropdown-container white-border">
+      <div
+        className="header-language-dropdown-container white-border"
+        onMouseEnter={() => {
+          setIsLanguageDropdownOpen(true)
+        }}
+
+        onMouseLeave={()=>{
+          setIsLanguageDropdownOpen(false);
+        }}
+      >
         <img src={flagImage} alt="Flag Image" className="header-flag-image" />
 
         <div className="header-language-dropdown ">
@@ -132,25 +147,62 @@ export const Header = () => {
         <div className="language-arrow-down">
           <DropdownIcon />
         </div>
-        <div className="language-option-arrow-up"></div>
-        <div className="all-language-option-container">
-          {nativeLanguages.map((lang,indx) => {
-            return (
-              <div
-                className="each-language-option-container"
-                key={`${indx}-${lang?.code}-${lang?.code}`}
-              >
-                <div className={`option-circle ${selectedLanguage?.code === lang.code?'option-selected':''}`}></div>
-                <div className="option-name-container">
-                  <div>{lang?.code}</div>
-                  <div>-</div>
-                  <div>{lang?.nativeName}</div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        {isLanguageDropdownOpen &&  (
+          <>
+            <div className="language-option-arrow-up"></div>
+            <div className="all-language-option-container">
+              {nativeLanguages.map((lang, indx) => {
+                return (
+                  <div
+                    className="each-language-option-container"
+                    key={`${indx}-${lang?.code}-${lang?.code}`}
+                  >
+                    <div
+                      className={`option-circle ${
+                        selectedLanguage?.code === lang.code
+                          ? "option-selected"
+                          : ""
+                      } ${
+                        hoveredLanguage?.code === lang?.code
+                          ? `background-orange`
+                          : ""
+                      }`}
+                      onClick={() => handleLanguageRadioChange(lang)}
+                      onMouseOver={() => {
+                        setHoveredLanguage(lang);
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredLanguage(lang);
+                      }}
+                    ></div>
+                    <div
+                      className="option-name-container"
+                      onClick={() => handleLanguageRadioChange(lang)}
+                      onMouseOver={() => {
+                        setHoveredLanguage(lang);
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredLanguage(lang);
+                      }}
+                    >
+                      <div>{lang?.code}</div>
+                      <div>-</div>
+                      <div>{lang?.nativeName}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
 };
+
+
+interface LanguageDTO {
+  code: string;
+  name: string;
+  nativeName: string;
+}

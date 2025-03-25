@@ -122,7 +122,8 @@
 
 .language-arrow-down{
   width: 1.5rem;
-  color:grey
+  color:grey;
+  margin-left: 5px;
 }
 
 .all-language-option-container{
@@ -133,7 +134,7 @@
   min-height: 100px;
   border: 1px solid black;
   background-color: white;
-  /* display: none; */
+  cursor:auto;
 }
 
 
@@ -152,16 +153,8 @@
   width: 13px;
   height: 13px;
   transform: rotate(45deg);
-  display: none;
 }
 
-.header-language-dropdown-container:hover > .all-language-option-container{
-  display: block;
-}
-
-.header-language-dropdown-container:hover > .language-option-arrow-up{
-  display: block;
-}
 
 .each-language-option-container{
   width: 90%;
@@ -169,7 +162,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1px 50px 1px 30px;
+  padding: 0 50px 0 30px;
 }
 
 .option-circle{
@@ -179,6 +172,7 @@
   outline: 1px solid black;
   outline-offset:2px;
   margin-right: 10px;
+  cursor:pointer;
 }
 
 .option-circle:hover{
@@ -191,18 +185,26 @@
   display: flex;
   justify-content: space-between;
   padding: 2px;
+  cursor:pointer;
 }
 
 .option-name-container:hover{
   border-bottom: 2px solid orange;
 }
 
-.each-language-option-container:hover > .option-circle{
-  background-color: orange;
-}
+
+ .option-circle:hover ~ .option-name-container{
+  color: orange;
+  border-bottom: 2px solid orange;
+} 
 
 .option-selected{
   background-color: #c48a1f;
 }
+
+.background-orange{
+  background-color: orange;
+}
+
 
 
