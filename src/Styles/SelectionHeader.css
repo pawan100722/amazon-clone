@@ -1,0 +1,17 @@
+.selection-header-container{
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #2f2a2a;
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.selection-option{
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding:2px;
+  cursor: pointer;
+}
