@@ -5,6 +5,7 @@ import { SearchIcon } from "../Icons/SearchIcon";
 import flagImage from "../Images/india_flag.png";
 import "../Styles/Header.css";
 import { DropdownIcon } from "../Icons/DropdownIcon";
+import { CartIcon } from "../Icons/CartIcon";
 
 export const Header = () => {
   const productCategories = CONSTANT.PRODUCT_CATEGORIES;
@@ -22,6 +23,7 @@ export const Header = () => {
     name: "",
     nativeName: "",
   });
+  const [cartCount] = useState<number>(0)
 
   /**
    * This function is used to take and set in input values of the header search bar
@@ -73,9 +75,6 @@ export const Header = () => {
     setIsLanguageDropdownOpen(false);
   }
 
-  /
-
-
   /**
    * It redirects to the amazon page
    */
@@ -99,7 +98,7 @@ export const Header = () => {
         </div>
         <div className="header-address-container">
           <span className="header-address">Bareilly Uttar Pradesh 243001</span>
-          <span className="location-update">Location Update</span>
+          <span className="font-bolder font-xl">Location Update</span>
         </div>
       </div>
 
@@ -131,10 +130,9 @@ export const Header = () => {
       <div
         className="header-language-dropdown-container white-border"
         onMouseEnter={() => {
-          setIsLanguageDropdownOpen(true)
+          setIsLanguageDropdownOpen(true);
         }}
-
-        onMouseLeave={()=>{
+        onMouseLeave={() => {
           setIsLanguageDropdownOpen(false);
         }}
       >
@@ -147,7 +145,7 @@ export const Header = () => {
         <div className="language-arrow-down">
           <DropdownIcon />
         </div>
-        {isLanguageDropdownOpen &&  (
+        {isLanguageDropdownOpen && (
           <>
             <div className="language-option-arrow-up"></div>
             <div className="all-language-option-container">
@@ -195,6 +193,23 @@ export const Header = () => {
             </div>
           </>
         )}
+      </div>
+
+      <div className="header-signin-container white-border">
+        <div className="">Hello, sign in</div>
+        <div className="font-bolder font-xl">Account & List</div>
+      </div>
+
+      <div className="header-signin-container white-border">
+        <div className="">Returns</div>
+        <div className="font-bolder font-xl">& Order</div>
+      </div>
+
+      <div className="header-cart-container white-border">
+        <p className="cart-count ">{cartCount}</p>
+        <span>
+          <CartIcon />
+        </span>
       </div>
     </div>
   );

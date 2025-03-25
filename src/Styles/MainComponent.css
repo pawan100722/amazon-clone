@@ -9,3 +9,12 @@ body{
 }
 
 .main-component-container{}
+
+.font-xl{
+  font-size: 0.9rem;
+}
+
+.font-bolder{
+  font-weight: bolder;
+}
+
