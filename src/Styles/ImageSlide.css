@@ -1,0 +1,14 @@
+.slider-container{
+  width: 90%;
+  height: 500px;
+  border: 1px solid black;
+  margin:10px auto;
+  display: flex;
+  overflow: hidden;
+}
+
+.slider-image{
+  width:100%;
+  margin:auto;
+  transition: transform 1s ease-out;
+}
