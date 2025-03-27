@@ -1,0 +1,39 @@
+.shopping-container{
+  position: absolute;
+  top:350px;
+  padding :20px;
+}
+
+.shopping-card-container{
+  background-color: white;
+}
+
+.shopping-card-title{
+  font-size: 1.6rem;
+  font-weight: bolder;
+  padding:10px 0 0 40px;
+}
+
+.shopping-card-images-container{
+  width: 400px;
+  height: 350px;
+  display: grid;
+  grid-template-columns: 130px 130px;
+  row-gap: 5px;
+  column-gap: 45px;
+  justify-content: center;
+  align-items: center;
+}
+
+.shopping-card-image{
+  width: 130px;
+  height: 120px;
+  cursor: pointer;
+}
+
+.shopping-card-link{
+  text-decoration: none;
+  color: blue;
+  margin-left: 40px;
+  font-size: 0.9rem;
+}
