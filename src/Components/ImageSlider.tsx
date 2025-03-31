@@ -29,13 +29,13 @@ export const ImageSlider = () => {
     });
   };
 
-  const prev = () => {
-    setCurrentIndex((prevCurr) => {
-      const currentValue = prevCurr === 0 ? imagesArr.length : --prevCurr;
+  // const prev = () => {
+  //   setCurrentIndex((prevCurr) => {
+  //     const currentValue = prevCurr === 0 ? imagesArr.length : --prevCurr;
 
-      return currentValue;
-    });
-  };
+  //     return currentValue;
+  //   });
+  // };
 
   useEffect(() => {
     const id=setInterval(() => {

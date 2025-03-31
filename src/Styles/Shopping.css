@@ -4,6 +4,7 @@
   padding :20px;
   display: flex;
   gap: 10px;
+  z-index:-4;
 }
 
 .shopping-card-container{

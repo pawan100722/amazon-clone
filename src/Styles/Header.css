@@ -153,6 +153,7 @@
   width: 13px;
   height: 13px;
   transform: rotate(45deg);
+  z-index: 10;
 }
 
 

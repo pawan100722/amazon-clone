@@ -4,6 +4,7 @@
   display: flex;
   overflow: hidden;
   position: relative;
+  z-index: -5;
 }
 
 .slider-image{
