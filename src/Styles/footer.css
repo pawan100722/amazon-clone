@@ -1,0 +1,33 @@
+.footer-section-container{
+  display: flex;
+  justify-content: center;
+  column-gap: 110px;
+  padding: 10px 50px;
+  background-color: #102e4b;
+  border-bottom: 1px solid gray;
+}
+
+.section-li li:first-child{
+  font-weight: bolder;
+  font-size: 1.3rem;
+}
+
+.footer-section li{
+  list-style: none;
+  font-size: 1rem;
+  font-weight:500;
+  margin: 5px;
+}
+
+.footer-section a{
+  text-decoration: none;
+  color: white;
+}
+
+.footer-section2-container{
+  background-color: #102e4b;
+  display: flex;
+  justify-content: center;
+  height: 150px;
+}
+

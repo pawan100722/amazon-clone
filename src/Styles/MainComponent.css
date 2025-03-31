@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  --button:orange;
 }
 
 body{
@@ -17,4 +18,46 @@ body{
 .font-bolder{
   font-weight: bolder;
 }
+
+.personalized-container{
+  width: 98%;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-top: 1.5px solid #c1bdbd;
+  border-bottom: 1.5px solid #c1bdbd;
+  padding: 40px;
+  row-gap: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.personalized-container p{
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.personalized-container button{
+  background-color: var(--button);
+  width: 400px;
+  padding: 4px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.personalized-container div{
+  font-size: 0.8rem;
+}
+
+.back-to-top{
+  cursor: pointer;
+  background-color: #012547;
+  color:white;
+  text-align: center;
+  padding: 5px;
+}
+
 

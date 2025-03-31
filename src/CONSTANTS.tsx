@@ -65,4 +65,41 @@ export const CONSTANT = {
     "Books",
     "Car & Motorbike",
   ],
+
+  FOOTER_LIST: {
+    LIST_1: [
+      { title: "Get to Know Us", src: "" },
+      { title: "About Amazon", src: "" },
+      { title: "Careers", src: "" },
+      { title: "Press Releases", src: "" },
+      { title: "Amazon Science", src: "" },
+    ],
+    LIST_2: [
+      { title: "Connect with Us", src: "" },
+      { title: "Facebook", src: "" },
+      { title: "Twitter", src: "" },
+      { title: "Instagram", src: "" },
+    ],
+    LIST_3: [
+      { title: "Make Money with Us", src: "" },
+      { title: "Sell on Amazon", src: "" },
+      { title: "Sell under Amazon Accelerator", src: "" },
+      { title: "Protect and Build Your Brand", src: "" },
+      { title: "Amazon Global Selling", src: "" },
+      { title: "Supply to Amazon", src: "" },
+      { title: "Become an Affiliate", src: "" },
+      { title: "Fulfillment by Amazon", src: "" },
+      { title: "Advertise Your Products", src: "" },
+      { title: "Amazon Pay on Merchants", src: "" },
+    ],
+    LIST_4: [
+      { title: "Let Us Help You", src: "" },
+      { title: "Your Account", src: "" },
+      { title: "Returns Centre", src: "" },
+      { title: "Recalls and Product Safety Alerts", src: "" },
+      { title: "100% Purchase Protection", src: "" },
+      { title: "Amazon App Download", src: "" },
+      { title: "Help", src: "" },
+    ],
+  },
 };
