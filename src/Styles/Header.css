@@ -1,14 +1,18 @@
 .home-header-container{
-  min-width: 1000px;
+  min-width: 100dvw;
   font-size: 12px;
   font-family: "Amazon Ember", Arial, sans-serif;
   background-color: var(--header-color);
   height: 65px;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   justify-content: flex-start;
   column-gap: 30px;
   padding-bottom: 10px;
+  /* position: fixed;
+  top:0;
+  z-index: 999; */
 }
 
 .amazon-logo-container{
@@ -239,6 +243,26 @@
   left: 26px;
   top: 0;
   font-size: 1.2rem;
+}
+
+@media(max-width:600px){
+  *{
+    font-size: 1rem;
+  }
+  .home-header-container{
+    height: auto;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 10px;
+  }
+
+  .header-input-container{
+    width: 100%;
+  }
+
+  .header-input-search-box{
+    width: 100%;
+  }
 }
 
 

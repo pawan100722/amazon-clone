@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { CONSTANT } from "../CONSTANTS";
-import '../Styles/SelectionHeader.css'
+import '../Styles/SelectionHeader.css';
 
 export const SelectionHeader =()=>{
+
   const [selectionOptions] = useState<string[]>(CONSTANT.SELECTION_HEADER_OPTIONS);
 
 

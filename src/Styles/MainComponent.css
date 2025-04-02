@@ -35,13 +35,14 @@ body{
 }
 
 .personalized-container p{
+  max-width: 100dvw;
   font-size: 2rem;
   font-weight: bolder;
 }
 
 .personalized-container button{
   background-color: var(--button);
-  width: 400px;
+  width: 300px;
   padding: 4px;
   border-radius: 10px;
   border: none;
